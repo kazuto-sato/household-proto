@@ -71,32 +71,32 @@ const SideBar = ({drawerWidth,mobileOpen,handleDrawerTransitionEnd,handleDrawerC
         >
             {/* モバイル用 */}
             <Drawer
-            variant="temporary"
-            open={mobileOpen}
-            onTransitionEnd={handleDrawerTransitionEnd}
-            onClose={handleDrawerClose}
-            sx={{
-                display: { xs: 'block', md: 'none' },
-                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-            }}
-            slotProps={{
-                root: {
-                keepMounted: true, // Better open performance on mobile.
-                },
-            }}
+                variant="temporary"
+                open={mobileOpen}
+                onTransitionEnd={handleDrawerTransitionEnd}
+                onClose={handleDrawerClose}
+                sx={{
+                    display: { xs: 'block', md: 'none' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                }}
+                slotProps={{
+                    root: {
+                    keepMounted: true, // Better open performance on mobile.
+                    },
+                }}
             >
             {drawer}
             </Drawer>
             
             {/* PC用 */}
             <Drawer
-            variant="permanent"
-            sx={{
-                display: { xs: 'none', md: 'block' },
-                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-            }}
-            open
-            >
+                variant="permanent"
+                sx={{
+                    display: { xs: 'none', md: 'block' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                }}
+                open
+                >
             {drawer}
             </Drawer>
         </Box>

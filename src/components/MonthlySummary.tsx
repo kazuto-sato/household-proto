@@ -3,6 +3,7 @@ import React from 'react'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import { theme } from '../theme/theme';
 
 const MonthlySummary = () => {
   return (
@@ -11,7 +12,7 @@ const MonthlySummary = () => {
         <Grid item xs={4} display={'flex'} flexDirection={'column'}>
             <Card
                 sx={{
-                    bgcolor:'blue',
+                    bgcolor:(theme) => theme.palette.incomeColor.main,
                     color:'white',
                     borderRadius:'10px',
                     flexGrow:1,
@@ -42,7 +43,7 @@ const MonthlySummary = () => {
         <Grid item xs={4} display={'flex'} flexDirection={'column'}>
             <Card
                 sx={{
-                    bgcolor:'red',
+                    bgcolor:(theme) => theme.palette.expenseColor.main, 
                     color:'white',
                     borderRadius:'10px',
                     flexGrow:1,
@@ -73,7 +74,7 @@ const MonthlySummary = () => {
         <Grid item xs={4} display={'flex'} flexDirection={'column'}>
             <Card
                 sx={{
-                    bgcolor:'green',
+                    bgcolor:(theme) => theme.palette.balanceColor.main,
                     color:'white',
                     borderRadius:'10px',
                     flexGrow:1,
