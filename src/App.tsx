@@ -11,6 +11,8 @@ import { CssBaseline } from '@mui/material';
 import { Transaction } from './types/index';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from './firebase';
+import { format } from 'date-fns';
+import { formatMonth } from './utils/formatting';
 
 function App() {
   //firestoreのエラーかどうかを判別する形ガード
@@ -19,6 +21,7 @@ function App() {
   }
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -52,6 +55,11 @@ function App() {
 
   },[]);
 
+  const monthlyTransactions = transactions.filter((transaction) => {
+    return transaction.date.startsWith(formatMonth(currentMonth));  //formatMonth関数でyyyy-MMの形に変換
+  })
+  console.log(monthlyTransactions);
+
   return (
     <ThemeProvider theme={theme}>
       {/* これはリセットcssみたいなやつ↓ */}
@@ -59,7 +67,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={ <AppLayout /> }>
-            <Route index element={ <Home /> }/>
+            <Route index element={ <Home monthlyTransactions={monthlyTransactions}/> }/>
             <Route path="/report" element={ <Report /> }/>
             <Route path="*" element={ <NoMatch /> }/>
           </Route>

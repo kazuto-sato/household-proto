@@ -4,12 +4,17 @@ import MonthlySummary from '../components/MonthlySummary'
 import Caldendar from '../components/Caldendar'
 import TransitionMenu from '../components/TransitionMenu'
 import TransitionForm from '../components/TransitionForm'
+import { Transaction } from '../types'
 
-const Home = () => {
+interface HomeProps {
+  monthlyTransactions: Transaction[],
+}
+
+const Home = ({monthlyTransactions}: HomeProps) => {
   return (
     <Box sx={{ display: 'flex' }}>
       <Box sx={{ flexGrow: 1, }}>
-        <MonthlySummary />
+        <MonthlySummary monthlyTransactions={monthlyTransactions}/>
         <Caldendar />
       </Box>
 
